@@ -1,2 +1,2 @@
 # TraningCPlusPlus
-C++ trainings
+C++ training files are situated here.
