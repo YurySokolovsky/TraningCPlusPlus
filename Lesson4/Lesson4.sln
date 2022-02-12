@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FillVectorToVector", "FillVectorToVector\FillVectorToVector.vcxproj", "{63B9FC66-96B9-41B3-8B31-DFBB08183A60}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GreedyBackpack", "GreedyBackpack\GreedyBackpack.vcxproj", "{F3F8E4C6-2E0C-484F-AFCA-452A814E2A02}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63B9FC66-96B9-41B3-8B31-DFBB08183A60}.Debug|x64.ActiveCfg = Debug|x64
+		{63B9FC66-96B9-41B3-8B31-DFBB08183A60}.Debug|x64.Build.0 = Debug|x64
+		{63B9FC66-96B9-41B3-8B31-DFBB08183A60}.Debug|x86.ActiveCfg = Debug|Win32
+		{63B9FC66-96B9-41B3-8B31-DFBB08183A60}.Release|x64.ActiveCfg = Release|x64
+		{63B9FC66-96B9-41B3-8B31-DFBB08183A60}.Release|x64.Build.0 = Release|x64
+		{63B9FC66-96B9-41B3-8B31-DFBB08183A60}.Release|x86.ActiveCfg = Release|Win32
+		{F3F8E4C6-2E0C-484F-AFCA-452A814E2A02}.Debug|x64.ActiveCfg = Debug|x64
+		{F3F8E4C6-2E0C-484F-AFCA-452A814E2A02}.Debug|x64.Build.0 = Debug|x64
+		{F3F8E4C6-2E0C-484F-AFCA-452A814E2A02}.Debug|x86.ActiveCfg = Debug|Win32
+		{F3F8E4C6-2E0C-484F-AFCA-452A814E2A02}.Release|x64.ActiveCfg = Release|x64
+		{F3F8E4C6-2E0C-484F-AFCA-452A814E2A02}.Release|x64.Build.0 = Release|x64
+		{F3F8E4C6-2E0C-484F-AFCA-452A814E2A02}.Release|x86.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F94EE7F-F576-4B1F-B407-3B95F86D1CE1}
+	EndGlobalSection
+EndGlobal
