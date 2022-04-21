@@ -1,40 +1,38 @@
 #pragma once
 #include <iostream>
-#include <ostream>
 #include <exception>
 
 template<class T>
 class Vector
 {
-	private:
-		int vSize;
-		int vCapacity;
-		T* elements;
-	public:
-		Vector();
-		Vector(int s);
-		Vector(Vector& other);
-		Vector(Vector&& other) noexcept;
-		~Vector();
-		int size();
-		int capacity();
-		bool empty();
-		void addMemory();
-		void push_back(const T& value);
-		void pop_back();
-		void insert(const int index, const T& value);
-		void remove(const int index);
-		void clear();
-		T* begin();
-		const T* begin() const;
-		T* end();
-		const T* end() const;
-		T& operator[](const int index);
-		const T& operator[](const int index) const;
-		Vector<T>& operator=(Vector<T>& other);
-		Vector<T>& operator=(Vector<T>&& other) noexcept;
-		friend std::ostream& operator<<(std::ostream& os, const Vector<T>& vec);
-};
+private:
+	int vSize;
+	int vCapacity;
+	T* elements;
+	void addMemory();
+public:
+	Vector();
+	Vector(int s);
+	Vector(const Vector& other);
+	Vector(Vector&& other) noexcept;
+	~Vector();
+	int size() const;
+	int capacity() const;
+	bool empty();
+	void push_back(const T& value);
+	void pop_back();
+	void insert(const int index, const T& value);
+	void remove(const int index);
+	void clear();
+	T* begin();
+	const T* begin() const;
+	T* end();
+	const T* end() const;
+	T& operator[](const int index);
+	const T& operator[](const int index) const;
+	Vector<T>& operator=(Vector<T>& other);
+	Vector<T>& operator=(Vector<T>&& other) noexcept;
+ };
 
 //Default constructor
 template<class T>
@@ -60,7 +58,7 @@ Vector<T>::~Vector()
 
 //Copy constructor
 template<class T>
-Vector<T>::Vector(Vector& other):elements(new T[other.vCapacity]), vSize(other.vSize), vCapacity(other.vCapacity)
+Vector<T>::Vector(const Vector& other):elements(new T[other.vCapacity]), vSize(other.vSize), vCapacity(other.vCapacity)
 {
 	std::cout << "Copy constructor" << std::endl;
 
@@ -82,14 +80,14 @@ Vector<T>::Vector(Vector<T>&& other) noexcept: elements(other.elements), vSize(o
 
 //Return vector size
 template<class T>
-int Vector<T>::size()
+int Vector<T>::size() const
 {
 	return vSize;
 }
 
 //Return vector capacity
 template<class T>
-int Vector<T>::capacity()
+int Vector<T>::capacity() const
 {
 	return vCapacity;
 }
@@ -205,7 +203,7 @@ T* Vector<T>::end()
 
 //Constant iterator end
 template<class T>
-const T*  Vector<T>::end() const
+const T* Vector<T>::end() const
 {
 	return &elements[vSize];
 }
@@ -239,10 +237,19 @@ Vector<T>& Vector<T>::operator=(Vector& other)
 	std::cout << "Copy operator=()" << std::endl;
 
 	if (this != &other) {
-		Vector<T> tmp(other);
-		std::swap(elements, tmp.elements);
-		std::swap(vSize, tmp.vSize);
-		std::swap(vCapacity, tmp.vCapacity);
+		vSize = other.vSize;
+		vCapacity = other.vCapacity;
+		elements = new T[other.vCapacity];
+		for (int i = 0; i < vSize; i++)
+		{
+			elements[i] = other.elements[i];
+		}
+
+		////Another implementation of operator logic
+		//Vector<T> tmp(other);
+		//std::swap(elements, tmp.elements);
+		//std::swap(vSize, tmp.vSize);
+		//std::swap(vCapacity, tmp.vCapacity);
 	}
 
 	return *this;
@@ -255,19 +262,30 @@ Vector<T>& Vector<T>::operator=(Vector&& other) noexcept
 	std::cout << "Copy moving operator=()" << std::endl;
 
 	if (this != &other) {
-		std::swap(elements, other.elements);
-		std::swap(vSize, other.vSize);
-		std::swap(vCapacity, other.vCapacity);
+		vSize = other.vSize;
+		vCapacity = other.vCapacity;
+		elements = other.elements;
+		other.elements = nullptr;
+		other.vCapacity = 0;
+		other.vSize = 0;
+
+		////Another implementation of operator logic
+		//std::swap(elements, other.elements);
+		//std::swap(vSize, other.vSize);
+		//std::swap(vCapacity, other.vCapacity);
+		//other.elements = nullptr;
 	}
 
 	return *this;
 }
 
 //Put vector to ostream
+//The "friend" function is not used in the declaration in the class
+//because access to private members of the class Vector is not used
 template<class T>
-std::ostream& operator<<(std::ostream& os, const Vector<T>& vec)
+std::ostream& operator<<(std::ostream & os, const Vector<T>&vec)
 {
 	for (int i = 0; i < vec.size(); i++)
-		os << vec[i] << " ";
+	os << vec[i] << " ";
 	return os;
 }
