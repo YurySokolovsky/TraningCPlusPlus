@@ -29,11 +29,16 @@ int main()
         std::cout << v << " ";
     }
 
-    //Chech methods and operator[] 
-    std::cout << "\nRemove element " << values[3] << " in position 4";
+    //Chech remove elements methods
+    std::cout << "\n\nRemove element " << values[3] << " in position 4";
     values.remove(3);
     std::cout << "\nPop_back(). Delete value " << values[values.size()-1];
     values.pop_back();
+
+    //Chech operator<<
+    std::cout << "\nVector values: " << values << "\n";
+
+    //Check insert methods
     std::cout << "\nInsert value 0 in position 0";
     values.insert(0, 0);
     std::cout << "\nSet value 10 in position 3";
@@ -42,7 +47,7 @@ int main()
     //Print vector values and check operator[]
     std::cout << "\nVector values: ";
     for (int i = 0; i < values.size(); i++) {
-        std::cout << values[i] << " ";
+         std::cout << values[i] << " ";
     }
 
     //Check clear() and empty() methods
@@ -70,7 +75,6 @@ int main()
     //Using copy moving operator
     valuesCopy2 = std::move(values);
 
-    //std::cout << values << std::endl;
     return 0;
 }
 
